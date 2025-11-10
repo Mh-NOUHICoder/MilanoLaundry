@@ -10,8 +10,7 @@ export default function Page() {
             colorBackground: '#ffffff',
             colorText: '#111827', // text-gray-900
             colorInputBackground: '#f9fafb', // bg-gray-50
-            colorInputText: '#111827',
-            colorButtonText: '#ffffff',
+            colorInputText: '#111827'
           },
           elements: {
             card: 'rounded-xl shadow-2xl overflow-hidden',
