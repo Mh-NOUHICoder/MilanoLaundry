@@ -105,7 +105,7 @@ const LoadingScreen = () => {
         
         {/* Friendly Loading Message */}
         <p className="text-lg sm:text-xl md:text-2xl text-white font-medium mt-2 ethereal-text-shadow">
-          Getting your clothes squeaky clean...
+          The sky’s clear — your laundry will be too 💦
         </p>
 
       </div>
