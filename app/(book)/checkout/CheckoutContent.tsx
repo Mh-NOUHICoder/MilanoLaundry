@@ -1,4 +1,4 @@
-// app/(book)/checkout/page.tsx
+// app/(book)/checkout/CheckoutContent.tsx
 "use client";
 import React, { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";

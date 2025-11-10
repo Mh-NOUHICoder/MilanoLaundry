@@ -1,14 +1,16 @@
 // src/components/Footer.jsx
+import { Bubbles } from 'lucide-react';
 import React from 'react';
 
 
 function Footer() {
   return (
-    <footer className="w-full bg-gray-900 text-white mt-8 p-6 border-t border-indigo-500/50">
+    <footer className="w-full bg-black text-white mt-8 p-6 border-t border-indigo-500/50">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         
         {/* Main Brand */}
-        <div className="text-xl font-extrabold tracking-wider text-indigo-400 mb-4 md:mb-0">
+        <div className="text-xl font-extrabold tracking-wider text-white mb-4 md:mb-0">
+          <Bubbles className="h-6 w-6 inline-block text-primary mr-2" />
           Milano Laundry
         </div>
         

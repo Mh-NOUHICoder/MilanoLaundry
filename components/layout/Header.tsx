@@ -1,7 +1,7 @@
 "use client";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { TextAlignStart, X, Bubbles, Grid, Zap, Sparkles, Droplets, Wallet, Info, Phone, LogIn } from "lucide-react";
+import { TextAlignStart, X, Bubbles, Shirt, ChevronDown,Zap, Sparkles, Droplets, Wallet, Info, Phone, LogIn } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -46,9 +46,10 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
   const [isOpen, setIsOpen] = useState(false);
 
   const servicesItems = [
-    { href: "/services/wash-fold", label: "Wash & Fold", icon: Droplets },
-    { href: "/services/dry-cleaning", label: "Dry Cleaning", icon: Sparkles },
-    { href: "/services/ironing", label: "Ironing Service", icon: Grid },
+    { href: "/service-selection/wash-fold", label: "Wash & Fold", icon: Droplets },
+    { href: "/service-selection/dry-cleaning", label: "Dry Cleaning", icon: Sparkles },
+    { href: "/service-selection/ironing", label: "Ironing Service", icon: Shirt },
+    {href: "/service-selection/express", label: "Express (Same-day)", icon: Zap },
   ];
 
   const otherNavItems = [
@@ -91,7 +92,7 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
 
                         {/* Services Group in Mobile Drawer */}
                         <div className="mb-4">
-                          <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 px-2 py-1">Services</h3>
+                          <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 px-2 py-1 focus:outline-none">Services</h3>
                           {servicesItems.map((item) => (
                             <Link
                               key={item.href}
@@ -171,7 +172,7 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
                           "dark:text-blue-200 dark:border dark:border-blue-950 text-base-blue dark:bg-neutral-900 bg-neutral-200"
                       )}
                     >
-                      <Zap size={18} />
+                      <ChevronDown size={18} />
                       <span>Services</span>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56" align="center">
@@ -215,7 +216,7 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
               {/* Sign In Button - Desktop only */}
               {!isMobile && (
                 <Link href="/sign-in">
-                  <Button variant="outline" className="border-neutral-200 dark:border-neutral-800">
+                  <Button variant="outline" className="border-neutral-200 text-black dark:border-neutral-800">
                     Sign In
                   </Button>
                 </Link>
@@ -223,7 +224,7 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
               
               {/* Book now CTA */}
               <a
-                href="/(book)"
+                href="/service-selection"
                 className="bg-cyan-400 hover:bg-cyan-500 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md transition-colors duration-200"
               >
                 Book now

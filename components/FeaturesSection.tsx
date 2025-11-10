@@ -8,7 +8,8 @@ interface Feature {
   icon: React.ReactNode;
   title: string;
   description: string;
-  gradient: string;
+  // Retaining gradient for unique icon colors
+  gradient: string; 
 }
 
 interface FeaturesSectionProps {
@@ -58,28 +59,35 @@ export default function FeaturesSection({ featuresRef }: FeaturesSectionProps) {
   return (
     <section
       ref={featuresRef}
-      className="py-20 bg-white/70 backdrop-blur-sm"
+      // Dark, high-contrast background
+      className="py-24 bg-zinc-950 text-white font-inter"
       aria-labelledby="features-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-2 
+              // Cyan-accented badge style
+              bg-cyan-400/10 text-cyan-400 px-5 py-2 rounded-full text-sm font-semibold mb-4 
+              border border-cyan-800 backdrop-blur-sm shadow-md shadow-cyan-900/50">
             🌟 Why We're Different
           </div>
 
           <h2
             id="features-heading"
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
+            // Larger, bolder text for impact
+            className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight"
           >
-            Laundry Made{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              Magical
+            Laundry Day,{" "}
+            <span className="text-transparent bg-clip-text 
+              // Primary Cyan Gradient (from-cyan-400)
+              bg-gradient-to-r from-cyan-400 to-blue-500">
+              Perfected
             </span>
           </h2>
 
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We've turned the chore you hate into a service you'll love.
+          <p className="text-lg text-zinc-400 max-w-3xl mx-auto">
+            We've turned the chore you hate into a service you'll love, combining speed, care, and sustainability.
           </p>
         </div>
 
@@ -88,23 +96,50 @@ export default function FeaturesSection({ featuresRef }: FeaturesSectionProps) {
           {features.map((feature, index) => (
             <motion.article
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 cursor-pointer hover:scale-[1.03]"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+              className="group 
+                // Modern dark card style with rounded corners
+                bg-zinc-800/60 
+                rounded-3xl p-8 
+                border border-zinc-700 
+                relative overflow-hidden
+                
+                // Creative hover effect: Cyan border highlight and subtle glow shadow
+                hover:border-cyan-400 
+                hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] 
+                transition-all duration-500
+                cursor-pointer"
             >
+                {/* Subtle radial glow effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 
+                    bg-[radial-gradient(ellipse_at_top,_var(--tw-color-cyan-900)_0%,_transparent_60%)]">
+                </div>
+
               <div
-                className={`w-16 h-16 flex items-center justify-center rounded-xl mb-4 bg-gradient-to-r ${feature.gradient} shadow-md group-hover:scale-110 transition-transform duration-300`}
+                className={`w-16 h-16 flex items-center justify-center rounded-xl mb-6 
+                  bg-gradient-to-br ${feature.gradient} 
+                  shadow-xl 
+                  
+                  // Icon container animation
+                  group-hover:scale-[1.05] 
+                  transition-transform duration-300 
+                  relative z-10`}
               >
                 {feature.icon}
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+              <h3 className="text-xl font-bold text-white mb-3 
+                // Title color changes to cyan on hover
+                group-hover:text-cyan-400 
+                transition-colors duration-300 
+                relative z-10">
                 {feature.title}
               </h3>
 
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-base text-zinc-400 leading-relaxed relative z-10">
                 {feature.description}
               </p>
             </motion.article>
