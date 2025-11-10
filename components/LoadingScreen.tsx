@@ -1,4 +1,5 @@
 import React from 'react';
+import {Bubbles} from 'lucide-react';
 
 // Define the custom keyframes for all animations
 const loadingStyles = (
@@ -105,9 +106,8 @@ const LoadingScreen = () => {
         
         {/* Friendly Loading Message */}
         <p className="text-lg sm:text-xl md:text-2xl text-white font-medium mt-2 ethereal-text-shadow">
-          The sky’s clear — your laundry will be too 💦
+          The sky’s clear — your laundry will be too...
         </p>
-
       </div>
     </div>
   );
