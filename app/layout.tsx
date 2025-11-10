@@ -1,16 +1,15 @@
+"use client";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Header from "../components/layout/Header";
+import Header from "@/components/layout/Header";
 import Footer from "../components/layout/Footer";
+import { useState } from "react";
 
 
 
-export const metadata: Metadata = {
-  title: "Milano Laundry",
-  description: "Milano Laundry - Your one-stop solution for laundry services.",
-};
 
 
 export default function RootLayout({
@@ -18,9 +17,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [localTheme, setLocalTheme] = useState<"light" | "dark">("light");
+
   return (
     <ClerkProvider>    
-        <html lang="en">
+        <html lang="en" className={localTheme}>
           <head>
           <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
@@ -29,7 +30,7 @@ export default function RootLayout({
           <link rel="icon" href="/assets/images/m_l_logo.png"/>
       </head>
           <body>
-            <Header />
+            <Header localTheme={localTheme} setLocalTheme={setLocalTheme} />
             {children}
             <Footer />   
           </body>

@@ -1,7 +1,7 @@
 "use client";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { TextAlignStart, X, Bubbles, Grid,Zap, Sparkles, Droplets, Wallet, Info, Phone } from "lucide-react";
+import { TextAlignStart, X, Bubbles, Grid, Zap, Sparkles, Droplets, Wallet, Info, Phone, LogIn } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -13,6 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 /** Logo component */
 function Logo({ className = "", showText = true }: { className?: string; showText?: boolean }) {
@@ -45,21 +46,15 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
   const [isOpen, setIsOpen] = useState(false);
 
   const servicesItems = [
-  { href: "/services/wash-fold", label: "Wash & Fold", icon: Droplets }, // water/droplets = washing
-  { href: "/services/dry-cleaning", label: "Dry Cleaning", icon: Sparkles }, // clean/shiny effect
-  { href: "/services/ironing", label: "Ironing Service", icon: Grid }, // Grid = ironing/pressing
-];
+    { href: "/services/wash-fold", label: "Wash & Fold", icon: Droplets },
+    { href: "/services/dry-cleaning", label: "Dry Cleaning", icon: Sparkles },
+    { href: "/services/ironing", label: "Ironing Service", icon: Grid },
+  ];
 
   const otherNavItems = [
     { href: "/pricing", label: "Pricing", icon: Wallet },
     { href: "/about", label: "About Us", icon: Info },
     { href: "/contact", label: "Contact", icon: Phone },
-  ];
-
-  // Combined items for mobile drawer
-  const allMobileItems = [
-    ...servicesItems.map(item => ({ ...item, group: "Services" })),
-    ...otherNavItems
   ];
 
   return (
@@ -130,6 +125,18 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
                             <span>{item.label}</span>
                           </Link>
                         ))}
+
+                        {/* Sign In in Mobile Drawer */}
+                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                          <Link
+                            href="/sign-in"
+                            className="cursor-pointer gap-1 select-none p-2 dark:hover:text-blue-200 hover:text-base-blue rounded-md transition-colors duration-200 flex items-center justify-start"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <LogIn size={20} />
+                            <span>Sign In</span>
+                          </Link>
+                        </div>
                       </div>
                     </Drawer.Content>
                   </Drawer.Portal>
@@ -203,11 +210,21 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
               )}
             </div>
 
-            {/* RIGHT: Book now CTA */}
+            {/* RIGHT: Book now CTA and Sign In (desktop) */}
             <div className="flex items-center gap-2 z-10">
+              {/* Sign In Button - Desktop only */}
+              {!isMobile && (
+                <Link href="/sign-in">
+                  <Button variant="outline" className="border-neutral-200 dark:border-neutral-800">
+                    Sign In
+                  </Button>
+                </Link>
+              )}
+              
+              {/* Book now CTA */}
               <a
                 href="/(book)"
-                className="bg-cyan-400 hover:bg-primary text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md"
+                className="bg-cyan-400 hover:bg-cyan-500 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md transition-colors duration-200"
               >
                 Book now
               </a>
