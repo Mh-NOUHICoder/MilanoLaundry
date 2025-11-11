@@ -20,7 +20,7 @@ export default function RootLayout({
   const [localTheme, setLocalTheme] = useState<"light" | "dark">("light");
 
   return (
-    // <ClerkProvider>    
+    <ClerkProvider>    
         <html lang="en" className={localTheme}>
           <head>
           <link
@@ -36,6 +36,6 @@ export default function RootLayout({
           </body>
 
         </html>
-    // </ClerkProvider>
+    </ClerkProvider>
   );
 }

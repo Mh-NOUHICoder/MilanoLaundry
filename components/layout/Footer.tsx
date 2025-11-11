@@ -17,7 +17,7 @@ function Footer() {
         {/* Quick Links / Navigation */}
         <nav className="flex space-x-6 text-sm text-gray-400">
           <a href="/about" className="hover:text-indigo-400 transition duration-150">About</a>
-          <a href="/services" className="hover:text-indigo-400 transition duration-150">Services</a>
+          <a href="/service-selection" className="hover:text-indigo-400 transition duration-150">Services</a>
           <a href="/pricing" className="hover:text-indigo-400 transition duration-150">Pricing</a>
           <a href="/contact" className="hover:text-indigo-400 transition duration-150">Contact</a>
         </nav>
