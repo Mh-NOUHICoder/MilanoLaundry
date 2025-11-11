@@ -103,7 +103,7 @@ const NotFound: React.FC<NotFoundProps> = ({
         </div>
       </div>
       {/* Error message */}
-      <h1 className="text-4xl md:text-6xl font-serif text-center mb-4">
+      <h1 className="text-4xl md:text-6xl font-serif text-center mb-8">
         {heading}
       </h1>
       {message && <p className="text-xl text-center mb-8">{message}</p>}
