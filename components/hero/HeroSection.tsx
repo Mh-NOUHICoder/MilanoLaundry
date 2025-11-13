@@ -37,7 +37,7 @@ const HeroSection: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300">
-          <Link href="/auth/register">
+          <Link href="/service-selection">
           <Button
             size="lg"
             variant="default"

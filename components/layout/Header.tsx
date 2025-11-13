@@ -1,7 +1,7 @@
 "use client";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { cn } from "@/lib/utils";
-import { TextAlignStart, X, Bubbles, Shirt, ChevronDown,Zap, Sparkles, Droplets, Wallet, Info, Phone, LogIn } from "lucide-react";
+import { TextAlignStart, X, Bubbles, Shirt, ChevronDown,Zap, Sparkles, Droplets, Wallet, Info, Phone, LogIn , ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -27,11 +27,10 @@ function Logo({ className = "", showText = true }: { className?: string; showTex
   );
 }
 
-interface HomeHeaderProps {
-  localTheme: "light" | "dark";
-  setLocalTheme: (theme: "light" | "dark") => void;
-}
 
+interface NavbarProps {
+  onBookNow: () => void;
+}
 function TopNotificationBar() {
   return (
     <div className="bg-black fixed top-0 left-0 right-0 h-6 flex items-center justify-center py-1 px-4 text-sm text-white z-30">
@@ -40,7 +39,9 @@ function TopNotificationBar() {
   );
 }
 
-export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProps) {
+
+
+export default function HomeHeader({  }) {
   const isMobile = useMediaQuery("(max-width: 992px)");
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -57,6 +58,8 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
     { href: "/about", label: "About Us", icon: Info },
     { href: "/contact", label: "Contact", icon: Phone },
   ];
+
+  const isBookingPage = pathname === '/service-selection' // Adjust this path
 
   return (
     <>
@@ -221,14 +224,23 @@ export default function HomeHeader({ localTheme, setLocalTheme }: HomeHeaderProp
                   </Button>
                 </Link>
               )}
-              
-              {/* Book now CTA */}
-              <a
-                href="/service-selection"
-                className="bg-cyan-400 hover:bg-cyan-500 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md transition-colors duration-200"
+              {isBookingPage ? (
+            <Link href="/">
+              <Button 
+                className="bg-black border-gray-600 text-white hover:bg-gray-800 hover:text-white transition-all"
               >
-                Book now
-              </a>
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/service-selection">
+              <Button 
+                className="bg-cyan-400 hover:bg-cyan-500 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md transition-colors duration-200"
+              > Book Now
+              </Button>
+            </Link>
+          )}
             </div>
           </div>
         </div>

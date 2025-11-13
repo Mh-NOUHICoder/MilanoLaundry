@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [localTheme, setLocalTheme] = useState<"light" | "dark">("light");
-
+  const [currentView, setCurrentView] = useState<'/' | 'booking'>("/");
   return (
     <ClerkProvider>    
         <html lang="en" className={localTheme}>
@@ -30,7 +30,7 @@ export default function RootLayout({
           <link rel="icon" href="/assets/images/m_l_logo.png"/>
       </head>
           <body>
-            <Header localTheme={localTheme} setLocalTheme={setLocalTheme} />
+            <Header />
             {children}
             <Footer />   
           </body>
