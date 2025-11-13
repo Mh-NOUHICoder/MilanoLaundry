@@ -152,7 +152,7 @@ const features = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-black mt-16 text-white">
+    <div className="min-h-screen bg-black mt-10 text-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-gray-900 to-black">
         <div className="container mx-auto px-4 text-center">
@@ -250,7 +250,7 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Link href="/booking">
+                  <Link href="/select-service">
                     <Button className={`w-full py-3 text-lg font-semibold transition-all duration-300 ${
                       service.popular 
                         ? 'bg-cyan-500 text-gray-900 hover:bg-cyan-400' 
@@ -330,7 +330,7 @@ export default function PricingPage() {
                     ))}
                   </ul>
 
-                  <Link href="/booking?plan=subscription">
+                  <Link href="/slect-service?plan=subscription">
                     <Button className={`w-full py-3 text-lg font-semibold transition-all duration-300 ${
                       plan.popular 
                         ? 'bg-cyan-500 text-gray-900 hover:bg-cyan-400' 

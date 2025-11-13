@@ -26,7 +26,7 @@ const GoogleMapEmbed = () => {
 // Interactive Google Maps with React
 const InteractiveGoogleMap = () => {
   return (
-    <div className="w-full h-full bg-gray-700 rounded-lg flex items-center justify-center">
+    <div className="w-full h-full bg-gray-700 rounded-lg flex items-center justify-center mt-10">
       <div className="text-center p-8">
         <MapPin className="w-16 h-16 text-cyan-400 mx-auto mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">Interactive Map</h3>
