@@ -237,7 +237,7 @@ export default function HomeHeader({  }) {
             <Link href="/service-selection">
               <Button 
                 className="bg-cyan-400 hover:bg-cyan-500 text-white border dark:border-neutral-800 border-neutral-200 h-10 items-center flex justify-center px-3 rounded-md transition-colors duration-200"
-              > Book Now
+              > Book now
               </Button>
             </Link>
           )}
